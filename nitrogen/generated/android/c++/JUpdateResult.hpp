@@ -15,7 +15,7 @@
 #include <optional>
 #include <string>
 
-namespace margelo::nitro::checkupdates {
+namespace margelo::nitro::inappupdates {
 
   using namespace facebook;
 
@@ -24,7 +24,7 @@ namespace margelo::nitro::checkupdates {
    */
   struct JUpdateResult final: public jni::JavaClass<JUpdateResult> {
   public:
-    static auto constexpr kJavaDescriptor = "Lcom/margelo/nitro/checkupdates/UpdateResult;";
+    static auto constexpr kJavaDescriptor = "Lcom/margelo/nitro/inappupdates/UpdateResult;";
 
   public:
     /**
@@ -61,4 +61,4 @@ namespace margelo::nitro::checkupdates {
     }
   };
 
-} // namespace margelo::nitro::checkupdates
+} // namespace margelo::nitro::inappupdates

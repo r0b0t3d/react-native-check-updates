@@ -13,7 +13,7 @@
 #include <optional>
 #include <string>
 
-namespace margelo::nitro::checkupdates {
+namespace margelo::nitro::inappupdates {
 
   using namespace facebook;
 
@@ -22,7 +22,7 @@ namespace margelo::nitro::checkupdates {
    */
   struct JUpdateInfo final: public jni::JavaClass<JUpdateInfo> {
   public:
-    static auto constexpr kJavaDescriptor = "Lcom/margelo/nitro/checkupdates/UpdateInfo;";
+    static auto constexpr kJavaDescriptor = "Lcom/margelo/nitro/inappupdates/UpdateInfo;";
 
   public:
     /**
@@ -75,4 +75,4 @@ namespace margelo::nitro::checkupdates {
     }
   };
 
-} // namespace margelo::nitro::checkupdates
+} // namespace margelo::nitro::inappupdates

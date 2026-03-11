@@ -1,6 +1,8 @@
 #include <jni.h>
-#include "checkupdatesOnLoad.hpp"
+#include "inappupdatesOnLoad.hpp"
 
 JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM* vm, void*) {
-  return margelo::nitro::checkupdates::initialize(vm);
+  return facebook::jni::initialize(vm, []() {
+    margelo::nitro::inappupdates::registerAllNatives();
+  });
 }

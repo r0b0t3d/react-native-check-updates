@@ -14,16 +14,16 @@
 #endif
 
 // Forward declaration of `UpdateResult` to properly resolve imports.
-namespace margelo::nitro::checkupdates { struct UpdateResult; }
+namespace margelo::nitro::inappupdates { struct UpdateResult; }
 // Forward declaration of `UpdateMode` to properly resolve imports.
-namespace margelo::nitro::checkupdates { enum class UpdateMode; }
+namespace margelo::nitro::inappupdates { enum class UpdateMode; }
 
 #include "UpdateResult.hpp"
 #include <NitroModules/Promise.hpp>
 #include "UpdateMode.hpp"
 #include <functional>
 
-namespace margelo::nitro::checkupdates {
+namespace margelo::nitro::inappupdates {
 
   using namespace margelo::nitro;
 
@@ -68,4 +68,4 @@ namespace margelo::nitro::checkupdates {
       static constexpr auto TAG = "InappUpdates";
   };
 
-} // namespace margelo::nitro::checkupdates
+} // namespace margelo::nitro::inappupdates

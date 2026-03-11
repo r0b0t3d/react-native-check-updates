@@ -8,11 +8,11 @@
 #include "JHybridInappUpdatesSpec.hpp"
 
 // Forward declaration of `UpdateResult` to properly resolve imports.
-namespace margelo::nitro::checkupdates { struct UpdateResult; }
+namespace margelo::nitro::inappupdates { struct UpdateResult; }
 // Forward declaration of `UpdateInfo` to properly resolve imports.
-namespace margelo::nitro::checkupdates { struct UpdateInfo; }
+namespace margelo::nitro::inappupdates { struct UpdateInfo; }
 // Forward declaration of `UpdateMode` to properly resolve imports.
-namespace margelo::nitro::checkupdates { enum class UpdateMode; }
+namespace margelo::nitro::inappupdates { enum class UpdateMode; }
 
 #include "UpdateResult.hpp"
 #include <NitroModules/Promise.hpp>
@@ -28,7 +28,7 @@ namespace margelo::nitro::checkupdates { enum class UpdateMode; }
 #include "JFunc_void_double.hpp"
 #include <NitroModules/JNICallable.hpp>
 
-namespace margelo::nitro::checkupdates {
+namespace margelo::nitro::inappupdates {
 
   std::shared_ptr<JHybridInappUpdatesSpec> JHybridInappUpdatesSpec::JavaPart::getJHybridInappUpdatesSpec() {
     auto hybridObject = JHybridObject::JavaPart::getJHybridObject();
@@ -114,4 +114,4 @@ namespace margelo::nitro::checkupdates {
     method(_javaPart, JFunc_void_double_cxx::fromCpp(progress));
   }
 
-} // namespace margelo::nitro::checkupdates
+} // namespace margelo::nitro::inappupdates

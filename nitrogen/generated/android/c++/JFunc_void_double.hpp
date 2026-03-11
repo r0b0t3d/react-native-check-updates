@@ -13,7 +13,7 @@
 #include <functional>
 #include <NitroModules/JNICallable.hpp>
 
-namespace margelo::nitro::checkupdates {
+namespace margelo::nitro::inappupdates {
 
   using namespace facebook;
 
@@ -23,7 +23,7 @@ namespace margelo::nitro::checkupdates {
    */
   struct JFunc_void_double: public jni::JavaClass<JFunc_void_double> {
   public:
-    static auto constexpr kJavaDescriptor = "Lcom/margelo/nitro/checkupdates/Func_void_double;";
+    static auto constexpr kJavaDescriptor = "Lcom/margelo/nitro/inappupdates/Func_void_double;";
 
   public:
     /**
@@ -59,7 +59,7 @@ namespace margelo::nitro::checkupdates {
     }
 
   public:
-    static auto constexpr kJavaDescriptor = "Lcom/margelo/nitro/checkupdates/Func_void_double_cxx;";
+    static auto constexpr kJavaDescriptor = "Lcom/margelo/nitro/inappupdates/Func_void_double_cxx;";
     static void registerNatives() {
       registerHybrid({makeNativeMethod("invoke_cxx", JFunc_void_double_cxx::invoke_cxx)});
     }
@@ -72,4 +72,4 @@ namespace margelo::nitro::checkupdates {
     std::function<void(double /* percent */)> _func;
   };
 
-} // namespace margelo::nitro::checkupdates
+} // namespace margelo::nitro::inappupdates

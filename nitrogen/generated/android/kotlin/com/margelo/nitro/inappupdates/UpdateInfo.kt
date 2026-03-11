@@ -5,7 +5,7 @@
 /// Copyright © Marc Rousavy @ Margelo
 ///
 
-package com.margelo.nitro.checkupdates
+package com.margelo.nitro.inappupdates
 
 import androidx.annotation.Keep
 import com.facebook.proguard.annotations.DoNotStrip

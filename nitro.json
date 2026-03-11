@@ -1,16 +1,16 @@
 {
-  "cxxNamespace": ["checkupdates"],
+  "cxxNamespace": ["inappupdates"],
   "ios": {
-    "iosModuleName": "CheckUpdates"
+    "iosModuleName": "InappUpdates"
   },
   "android": {
-    "androidNamespace": ["checkupdates"],
-    "androidCxxLibName": "checkupdates"
+    "androidNamespace": ["inappupdates"],
+    "androidCxxLibName": "inappupdates"
   },
   "autolinking": {
-    "CheckUpdates": {
-      "swift": "CheckUpdates",
-      "kotlin": "CheckUpdates"
+    "InappUpdates": {
+      "swift": "InappUpdates",
+      "kotlin": "InappUpdates"
     }
   },
   "ignorePaths": ["node_modules"]

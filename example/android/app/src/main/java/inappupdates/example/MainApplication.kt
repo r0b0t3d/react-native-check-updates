@@ -1,4 +1,4 @@
-package checkupdates.example
+package inappupdates.example
 
 import android.app.Application
 import com.facebook.react.PackageList

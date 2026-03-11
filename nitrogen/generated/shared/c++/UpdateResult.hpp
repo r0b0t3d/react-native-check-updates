@@ -29,12 +29,12 @@
 #endif
 
 // Forward declaration of `UpdateInfo` to properly resolve imports.
-namespace margelo::nitro::checkupdates { struct UpdateInfo; }
+namespace margelo::nitro::inappupdates { struct UpdateInfo; }
 
 #include "UpdateInfo.hpp"
 #include <optional>
 
-namespace margelo::nitro::checkupdates {
+namespace margelo::nitro::inappupdates {
 
   /**
    * A struct which can be represented as a JavaScript object (UpdateResult).
@@ -52,24 +52,24 @@ namespace margelo::nitro::checkupdates {
     friend bool operator==(const UpdateResult& lhs, const UpdateResult& rhs) = default;
   };
 
-} // namespace margelo::nitro::checkupdates
+} // namespace margelo::nitro::inappupdates
 
 namespace margelo::nitro {
 
   // C++ UpdateResult <> JS UpdateResult (object)
   template <>
-  struct JSIConverter<margelo::nitro::checkupdates::UpdateResult> final {
-    static inline margelo::nitro::checkupdates::UpdateResult fromJSI(jsi::Runtime& runtime, const jsi::Value& arg) {
+  struct JSIConverter<margelo::nitro::inappupdates::UpdateResult> final {
+    static inline margelo::nitro::inappupdates::UpdateResult fromJSI(jsi::Runtime& runtime, const jsi::Value& arg) {
       jsi::Object obj = arg.asObject(runtime);
-      return margelo::nitro::checkupdates::UpdateResult(
+      return margelo::nitro::inappupdates::UpdateResult(
         JSIConverter<bool>::fromJSI(runtime, obj.getProperty(runtime, PropNameIDCache::get(runtime, "available"))),
-        JSIConverter<std::optional<margelo::nitro::checkupdates::UpdateInfo>>::fromJSI(runtime, obj.getProperty(runtime, PropNameIDCache::get(runtime, "info")))
+        JSIConverter<std::optional<margelo::nitro::inappupdates::UpdateInfo>>::fromJSI(runtime, obj.getProperty(runtime, PropNameIDCache::get(runtime, "info")))
       );
     }
-    static inline jsi::Value toJSI(jsi::Runtime& runtime, const margelo::nitro::checkupdates::UpdateResult& arg) {
+    static inline jsi::Value toJSI(jsi::Runtime& runtime, const margelo::nitro::inappupdates::UpdateResult& arg) {
       jsi::Object obj(runtime);
       obj.setProperty(runtime, PropNameIDCache::get(runtime, "available"), JSIConverter<bool>::toJSI(runtime, arg.available));
-      obj.setProperty(runtime, PropNameIDCache::get(runtime, "info"), JSIConverter<std::optional<margelo::nitro::checkupdates::UpdateInfo>>::toJSI(runtime, arg.info));
+      obj.setProperty(runtime, PropNameIDCache::get(runtime, "info"), JSIConverter<std::optional<margelo::nitro::inappupdates::UpdateInfo>>::toJSI(runtime, arg.info));
       return obj;
     }
     static inline bool canConvert(jsi::Runtime& runtime, const jsi::Value& value) {
@@ -81,7 +81,7 @@ namespace margelo::nitro {
         return false;
       }
       if (!JSIConverter<bool>::canConvert(runtime, obj.getProperty(runtime, PropNameIDCache::get(runtime, "available")))) return false;
-      if (!JSIConverter<std::optional<margelo::nitro::checkupdates::UpdateInfo>>::canConvert(runtime, obj.getProperty(runtime, PropNameIDCache::get(runtime, "info")))) return false;
+      if (!JSIConverter<std::optional<margelo::nitro::inappupdates::UpdateInfo>>::canConvert(runtime, obj.getProperty(runtime, PropNameIDCache::get(runtime, "info")))) return false;
       return true;
     }
   };

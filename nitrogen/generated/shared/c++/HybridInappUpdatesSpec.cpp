@@ -7,7 +7,7 @@
 
 #include "HybridInappUpdatesSpec.hpp"
 
-namespace margelo::nitro::checkupdates {
+namespace margelo::nitro::inappupdates {
 
   void HybridInappUpdatesSpec::loadHybridMethods() {
     // load base methods/properties
@@ -21,4 +21,4 @@ namespace margelo::nitro::checkupdates {
     });
   }
 
-} // namespace margelo::nitro::checkupdates
+} // namespace margelo::nitro::inappupdates

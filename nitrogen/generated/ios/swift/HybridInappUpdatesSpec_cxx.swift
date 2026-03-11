@@ -18,11 +18,11 @@ import NitroModules
  */
 open class HybridInappUpdatesSpec_cxx {
   /**
-   * The Swift <> C++ bridge's namespace (`margelo::nitro::checkupdates::bridge::swift`)
-   * from `CheckUpdates-Swift-Cxx-Bridge.hpp`.
+   * The Swift <> C++ bridge's namespace (`margelo::nitro::inappupdates::bridge::swift`)
+   * from `InappUpdates-Swift-Cxx-Bridge.hpp`.
    * This contains specialized C++ templates, and C++ helper functions that can be accessed from Swift.
    */
-  public typealias bridge = margelo.nitro.checkupdates.bridge.swift
+  public typealias bridge = margelo.nitro.inappupdates.bridge.swift
 
   /**
    * Holds an instance of the `HybridInappUpdatesSpec` Swift protocol.
@@ -146,7 +146,7 @@ open class HybridInappUpdatesSpec_cxx {
   @inline(__always)
   public final func startUpdate(mode: Int32) -> bridge.Result_std__shared_ptr_Promise_bool___ {
     do {
-      let __result = try self.__implementation.startUpdate(mode: margelo.nitro.checkupdates.UpdateMode(rawValue: mode)!)
+      let __result = try self.__implementation.startUpdate(mode: margelo.nitro.inappupdates.UpdateMode(rawValue: mode)!)
       let __resultCpp = { () -> bridge.std__shared_ptr_Promise_bool__ in
         let __promise = bridge.create_std__shared_ptr_Promise_bool__()
         let __promiseHolder = bridge.wrap_std__shared_ptr_Promise_bool__(__promise)

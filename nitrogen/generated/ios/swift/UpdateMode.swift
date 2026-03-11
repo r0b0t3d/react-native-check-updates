@@ -8,7 +8,7 @@
 /**
  * Represents the JS union `UpdateMode`, backed by a C++ enum.
  */
-public typealias UpdateMode = margelo.nitro.checkupdates.UpdateMode
+public typealias UpdateMode = margelo.nitro.inappupdates.UpdateMode
 
 public extension UpdateMode {
   /**

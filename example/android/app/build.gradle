@@ -77,9 +77,9 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace "checkupdates.example"
+    namespace "inappupdates.example"
     defaultConfig {
-        applicationId "checkupdates.example"
+        applicationId "inappupdates.example"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

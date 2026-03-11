@@ -33,7 +33,7 @@
 #include <optional>
 #include <string>
 
-namespace margelo::nitro::checkupdates {
+namespace margelo::nitro::inappupdates {
 
   /**
    * A struct which can be represented as a JavaScript object (UpdateInfo).
@@ -55,16 +55,16 @@ namespace margelo::nitro::checkupdates {
     friend bool operator==(const UpdateInfo& lhs, const UpdateInfo& rhs) = default;
   };
 
-} // namespace margelo::nitro::checkupdates
+} // namespace margelo::nitro::inappupdates
 
 namespace margelo::nitro {
 
   // C++ UpdateInfo <> JS UpdateInfo (object)
   template <>
-  struct JSIConverter<margelo::nitro::checkupdates::UpdateInfo> final {
-    static inline margelo::nitro::checkupdates::UpdateInfo fromJSI(jsi::Runtime& runtime, const jsi::Value& arg) {
+  struct JSIConverter<margelo::nitro::inappupdates::UpdateInfo> final {
+    static inline margelo::nitro::inappupdates::UpdateInfo fromJSI(jsi::Runtime& runtime, const jsi::Value& arg) {
       jsi::Object obj = arg.asObject(runtime);
-      return margelo::nitro::checkupdates::UpdateInfo(
+      return margelo::nitro::inappupdates::UpdateInfo(
         JSIConverter<std::optional<double>>::fromJSI(runtime, obj.getProperty(runtime, PropNameIDCache::get(runtime, "versionCode"))),
         JSIConverter<std::optional<double>>::fromJSI(runtime, obj.getProperty(runtime, PropNameIDCache::get(runtime, "availableVersionCode"))),
         JSIConverter<std::optional<double>>::fromJSI(runtime, obj.getProperty(runtime, PropNameIDCache::get(runtime, "updatePriority"))),
@@ -73,7 +73,7 @@ namespace margelo::nitro {
         JSIConverter<std::optional<std::string>>::fromJSI(runtime, obj.getProperty(runtime, PropNameIDCache::get(runtime, "appUrl")))
       );
     }
-    static inline jsi::Value toJSI(jsi::Runtime& runtime, const margelo::nitro::checkupdates::UpdateInfo& arg) {
+    static inline jsi::Value toJSI(jsi::Runtime& runtime, const margelo::nitro::inappupdates::UpdateInfo& arg) {
       jsi::Object obj(runtime);
       obj.setProperty(runtime, PropNameIDCache::get(runtime, "versionCode"), JSIConverter<std::optional<double>>::toJSI(runtime, arg.versionCode));
       obj.setProperty(runtime, PropNameIDCache::get(runtime, "availableVersionCode"), JSIConverter<std::optional<double>>::toJSI(runtime, arg.availableVersionCode));

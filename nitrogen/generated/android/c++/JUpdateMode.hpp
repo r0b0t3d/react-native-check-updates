@@ -10,7 +10,7 @@
 #include <fbjni/fbjni.h>
 #include "UpdateMode.hpp"
 
-namespace margelo::nitro::checkupdates {
+namespace margelo::nitro::inappupdates {
 
   using namespace facebook;
 
@@ -19,7 +19,7 @@ namespace margelo::nitro::checkupdates {
    */
   struct JUpdateMode final: public jni::JavaClass<JUpdateMode> {
   public:
-    static auto constexpr kJavaDescriptor = "Lcom/margelo/nitro/checkupdates/UpdateMode;";
+    static auto constexpr kJavaDescriptor = "Lcom/margelo/nitro/inappupdates/UpdateMode;";
 
   public:
     /**
@@ -55,4 +55,4 @@ namespace margelo::nitro::checkupdates {
     }
   };
 
-} // namespace margelo::nitro::checkupdates
+} // namespace margelo::nitro::inappupdates

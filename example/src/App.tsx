@@ -8,7 +8,7 @@ export default function App() {
 
   useEffect(() => {
     checkForUpdate({
-      bundleId: 'com.r0b0t3d.checkupdates',
+      bundleId: 'com.r0b0t3d.inappupdates',
     }).then((updateInfo) => {
       if (updateInfo) {
         console.log('New version available:', updateInfo);

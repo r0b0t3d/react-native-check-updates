@@ -23,7 +23,7 @@
 #error NitroModules cannot be found! Are you sure you installed NitroModules properly?
 #endif
 
-namespace margelo::nitro::checkupdates {
+namespace margelo::nitro::inappupdates {
 
   /**
    * An enum which can be represented as a JavaScript union (UpdateMode).
@@ -33,26 +33,26 @@ namespace margelo::nitro::checkupdates {
     FLEXIBLE      SWIFT_NAME(flexible) = 1,
   } CLOSED_ENUM;
 
-} // namespace margelo::nitro::checkupdates
+} // namespace margelo::nitro::inappupdates
 
 namespace margelo::nitro {
 
   // C++ UpdateMode <> JS UpdateMode (union)
   template <>
-  struct JSIConverter<margelo::nitro::checkupdates::UpdateMode> final {
-    static inline margelo::nitro::checkupdates::UpdateMode fromJSI(jsi::Runtime& runtime, const jsi::Value& arg) {
+  struct JSIConverter<margelo::nitro::inappupdates::UpdateMode> final {
+    static inline margelo::nitro::inappupdates::UpdateMode fromJSI(jsi::Runtime& runtime, const jsi::Value& arg) {
       std::string unionValue = JSIConverter<std::string>::fromJSI(runtime, arg);
       switch (hashString(unionValue.c_str(), unionValue.size())) {
-        case hashString("immediate"): return margelo::nitro::checkupdates::UpdateMode::IMMEDIATE;
-        case hashString("flexible"): return margelo::nitro::checkupdates::UpdateMode::FLEXIBLE;
+        case hashString("immediate"): return margelo::nitro::inappupdates::UpdateMode::IMMEDIATE;
+        case hashString("flexible"): return margelo::nitro::inappupdates::UpdateMode::FLEXIBLE;
         default: [[unlikely]]
           throw std::invalid_argument("Cannot convert \"" + unionValue + "\" to enum UpdateMode - invalid value!");
       }
     }
-    static inline jsi::Value toJSI(jsi::Runtime& runtime, margelo::nitro::checkupdates::UpdateMode arg) {
+    static inline jsi::Value toJSI(jsi::Runtime& runtime, margelo::nitro::inappupdates::UpdateMode arg) {
       switch (arg) {
-        case margelo::nitro::checkupdates::UpdateMode::IMMEDIATE: return JSIConverter<std::string>::toJSI(runtime, "immediate");
-        case margelo::nitro::checkupdates::UpdateMode::FLEXIBLE: return JSIConverter<std::string>::toJSI(runtime, "flexible");
+        case margelo::nitro::inappupdates::UpdateMode::IMMEDIATE: return JSIConverter<std::string>::toJSI(runtime, "immediate");
+        case margelo::nitro::inappupdates::UpdateMode::FLEXIBLE: return JSIConverter<std::string>::toJSI(runtime, "flexible");
         default: [[unlikely]]
           throw std::invalid_argument("Cannot convert UpdateMode to JS - invalid value: "
                                     + std::to_string(static_cast<int>(arg)) + "!");

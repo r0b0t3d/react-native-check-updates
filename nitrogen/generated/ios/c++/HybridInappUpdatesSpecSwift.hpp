@@ -10,14 +10,14 @@
 #include "HybridInappUpdatesSpec.hpp"
 
 // Forward declaration of `HybridInappUpdatesSpec_cxx` to properly resolve imports.
-namespace CheckUpdates { class HybridInappUpdatesSpec_cxx; }
+namespace InappUpdates { class HybridInappUpdatesSpec_cxx; }
 
 // Forward declaration of `UpdateResult` to properly resolve imports.
-namespace margelo::nitro::checkupdates { struct UpdateResult; }
+namespace margelo::nitro::inappupdates { struct UpdateResult; }
 // Forward declaration of `UpdateInfo` to properly resolve imports.
-namespace margelo::nitro::checkupdates { struct UpdateInfo; }
+namespace margelo::nitro::inappupdates { struct UpdateInfo; }
 // Forward declaration of `UpdateMode` to properly resolve imports.
-namespace margelo::nitro::checkupdates { enum class UpdateMode; }
+namespace margelo::nitro::inappupdates { enum class UpdateMode; }
 
 #include "UpdateResult.hpp"
 #include <NitroModules/Promise.hpp>
@@ -27,9 +27,9 @@ namespace margelo::nitro::checkupdates { enum class UpdateMode; }
 #include "UpdateMode.hpp"
 #include <functional>
 
-#include "CheckUpdates-Swift-Cxx-Umbrella.hpp"
+#include "InappUpdates-Swift-Cxx-Umbrella.hpp"
 
-namespace margelo::nitro::checkupdates {
+namespace margelo::nitro::inappupdates {
 
   /**
    * The C++ part of HybridInappUpdatesSpec_cxx.swift.
@@ -44,13 +44,13 @@ namespace margelo::nitro::checkupdates {
   class HybridInappUpdatesSpecSwift: public virtual HybridInappUpdatesSpec {
   public:
     // Constructor from a Swift instance
-    explicit HybridInappUpdatesSpecSwift(const CheckUpdates::HybridInappUpdatesSpec_cxx& swiftPart):
+    explicit HybridInappUpdatesSpecSwift(const InappUpdates::HybridInappUpdatesSpec_cxx& swiftPart):
       HybridObject(HybridInappUpdatesSpec::TAG),
       _swiftPart(swiftPart) { }
 
   public:
     // Get the Swift part
-    inline CheckUpdates::HybridInappUpdatesSpec_cxx& getSwiftPart() noexcept {
+    inline InappUpdates::HybridInappUpdatesSpec_cxx& getSwiftPart() noexcept {
       return _swiftPart;
     }
 
@@ -109,7 +109,7 @@ namespace margelo::nitro::checkupdates {
     }
 
   private:
-    CheckUpdates::HybridInappUpdatesSpec_cxx _swiftPart;
+    InappUpdates::HybridInappUpdatesSpec_cxx _swiftPart;
   };
 
-} // namespace margelo::nitro::checkupdates
+} // namespace margelo::nitro::inappupdates

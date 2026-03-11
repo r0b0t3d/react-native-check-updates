@@ -10,10 +10,10 @@ import NitroModules
 /**
  * Represents an instance of `UpdateResult`, backed by a C++ struct.
  */
-public typealias UpdateResult = margelo.nitro.checkupdates.UpdateResult
+public typealias UpdateResult = margelo.nitro.inappupdates.UpdateResult
 
 public extension UpdateResult {
-  private typealias bridge = margelo.nitro.checkupdates.bridge.swift
+  private typealias bridge = margelo.nitro.inappupdates.bridge.swift
 
   /**
    * Create a new instance of `UpdateResult`.
