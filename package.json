@@ -1,7 +1,7 @@
 {
   "name": "react-native-check-updates",
-  "version": "0.1.0",
-  "description": "Simple way to check for new versionCheck for new version",
+  "version": "0.1.5",
+  "description": "Simple way to check for new version",
   "main": "./lib/module/index.js",
   "types": "./lib/typescript/src/index.d.ts",
   "exports": {
