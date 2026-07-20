@@ -46,7 +46,7 @@ class InappUpdates : HybridInappUpdatesSpec(), Application.ActivityLifecycleCall
           versionCode = info.updateAvailability().toDouble(),
           availableVersionCode = info.availableVersionCode().toDouble(),
           updatePriority = info.updatePriority().toDouble(),
-          version = "",
+          version = info.availableVersionCode().toString(),
           releaseNotes = "",
           appUrl = ""
         )
