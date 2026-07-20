@@ -29,7 +29,7 @@ export function startUpdate(_options?: {
   }
   return Linking.canOpenURL(appStoreInfo.appUrl).then((canOpen) => {
     if (canOpen) {
-      Linking.openURL(appStoreInfo!.appUrl!);
+      Linking.openURL(appStoreInfo!.appUrl!).catch(() => {});
     }
     return true;
   });
