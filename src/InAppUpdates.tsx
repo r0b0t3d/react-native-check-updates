@@ -9,6 +9,10 @@ const InappUpdatesHybridObject =
 
 export async function checkForUpdate(_options: {
   bundleId?: string;
+  // iOS only
+  version?: string;
+  country?: string;
+  minReleaseAgeHours?: number;
 }): Promise<UpdateInfo | null> {
   const result = await InappUpdatesHybridObject.checkForUpdate();
   if (result.available) {

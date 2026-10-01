@@ -1,4 +1,4 @@
-import { Linking } from 'react-native';
+import { Linking, Platform } from 'react-native';
 import type { UpdateMode, UpdateInfo } from './specs/InappUpdates.nitro';
 
 let appStoreInfo: UpdateInfo | null = null;
@@ -6,17 +6,31 @@ let appStoreInfo: UpdateInfo | null = null;
 export async function checkForUpdate(options?: {
   bundleId?: string;
   version?: string;
+  country?: string;
+  minReleaseAgeHours?: number;
 }): Promise<UpdateInfo | null> {
   if (!options?.bundleId || !options.version) {
     throw new Error('bundleId and version are required');
   }
-  appStoreInfo = await getAppStoreInfo(options.bundleId);
-  if (
-    !appStoreInfo ||
-    !compareVersions(options.version, appStoreInfo.version)
-  ) {
+  const appInfo = await getAppStoreInfo(options.bundleId, options.country);
+  if (!appInfo || !compareVersions(options.version, appInfo.version)) {
     return null;
   }
+  // Device can't install the new build, App Store would show "Open"
+  if (compareVersions(String(Platform.Version), appInfo.minimumOsVersion)) {
+    return null;
+  }
+  // Lookup API updates before the App Store CDN does, so give it time
+  const releasedAt = Date.parse(appInfo.currentVersionReleaseDate);
+  const minAgeMs = (options.minReleaseAgeHours ?? 24) * 60 * 60 * 1000;
+  if (!Number.isNaN(releasedAt) && Date.now() - releasedAt < minAgeMs) {
+    return null;
+  }
+  appStoreInfo = {
+    version: appInfo.version,
+    releaseNotes: appInfo.releaseNotes, // 👈 "What's New" text
+    appUrl: appInfo.trackViewUrl, // App Store URL
+  };
   return appStoreInfo;
 }
 
@@ -41,18 +55,27 @@ export function completeUpdate(): Promise<boolean> {
 
 export function onProgress(_progress: (percent: number) => void): void {}
 
-async function getAppStoreInfo(bundleId: string): Promise<UpdateInfo | null> {
-  const url = `https://itunes.apple.com/lookup?bundleId=${bundleId}`;
+interface AppStoreLookupResult {
+  version: string;
+  releaseNotes?: string;
+  trackViewUrl?: string;
+  minimumOsVersion?: string;
+  currentVersionReleaseDate: string;
+}
+
+async function getAppStoreInfo(
+  bundleId: string,
+  country?: string
+): Promise<AppStoreLookupResult | null> {
+  let url = `https://itunes.apple.com/lookup?bundleId=${bundleId}`;
+  if (country) {
+    url += `&country=${country}`;
+  }
   const response = await fetch(url);
   const data = await response.json();
 
   if (data.resultCount > 0) {
-    const appInfo = data.results[0];
-    return {
-      version: appInfo.version,
-      releaseNotes: appInfo.releaseNotes, // 👈 "What's New" text
-      appUrl: appInfo.trackViewUrl, // App Store URL
-    };
+    return data.results[0];
   }
   return null;
 }
